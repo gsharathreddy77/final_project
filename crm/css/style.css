@@ -517,7 +517,7 @@ header nav ul li.current a.m5 {
 #newsletter-form input {
 	border:1px solid #0086b5;
 	background:#fff;
-	color:#8e8e8e;
+	
 	font-size:.857em;
 	padding:2px 5px 2px 5px;
 	width:171px;
@@ -623,4 +623,35 @@ footer .footerlink {
 }
 a {
 	outline:none;
+}
+/*
+#message tr .high:hover {
+		background-color:#b0c4de;
+}
+*/
+
+.high{
+	cursor: pointer; 
+	cursor: hand;
+}
+.high .sender_name{
+	float:left;
+	color:blue;
+}
+.high .time_stamp{
+	text-align:right;
+}
+.high:hover
+{
+	background-color:#E3E3E3;
+}
+
+
+.reply_name{
+	color:blue;
+}
+
+#myTextarea{
+	width:260px;
+	height:100px;
 }
