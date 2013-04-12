@@ -70,7 +70,7 @@ function send_message(sender_id)
 	message = message.replace(/^\s+|\s+$/g,'');
 	if(message.length == 0 || message ==="" || message=="" )
 	{
-		alert("hjellsdf");
+		alert("Please write something");
 		return;
 	}
 	alert(message);
@@ -184,6 +184,8 @@ function new_message(sender)
           Uis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae. </li>
       </ul>
     </aside>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;
 		<a href="#compose_message_modal" role="button" class="btn" data-toggle="modal">New Message</a>
 				
 				 <div id='compose_message_modal' class='modal hide fade' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
@@ -209,9 +211,8 @@ function new_message(sender)
 			<div  style="height:500px;width:42%;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;" >
 				
 				
-					<table  id="message" >
+					<div  id="message" >
 						<?php
-							
 							$result_set = get_recent_chat($webmail_id);
 							if($result_set<>NULL)
 							{
@@ -221,25 +222,27 @@ function new_message(sender)
 										$message = $message_result['message'];
 										$time_stamp = $message_result['time_stamp'];
 										
-										//echo "<div  id =\"edited_comment{$message_result['webmail_id_sender']}\" > ";
-											echo "<tr onclick=\"fill_messages('{$sender_name}');\">";
+											echo"<div class='high'>";
+												echo "<div onclick=\"fill_messages('{$sender_name}');\"  > ";
 											
-											echo "<td  width='100px'>{$sender_name}</td>";
-											echo "<td align='right'>{$time_stamp}</td>";
-											echo "</tr>";
+												echo "<div  width='100px' class='sender_name'>{$sender_name}</div>";
+												echo "<div  class='time_stamp'>{$time_stamp}</div>";
+												echo "</div>";
 											
-											echo "<tr onclick= fill_messages('{$sender_name}');>";
-											echo "<td colspan='2'>{$message}</td>";
-											echo "<td></td>";
-											echo "</tr>";
-											echo "<tr><td colspan='2'>--------------------------------------</td></tr>";
-										//echo "</div>";
+												echo "<div onclick= fill_messages('{$sender_name}');  >";
+												echo "<div >{$message}</div>";
+												echo "<div></div>";
+												echo "</div>";
+											echo "</div>";
+											echo "<div >----------------------------------------------------</div>";
+
 									}
 									
 									
 							}
 						?>
-					</table>
+
+					</div>
 				
 			</div>
 

@@ -16,7 +16,7 @@ $reciever_id = $_SESSION['webmail_id'];
 		$result_set = mysql_query($query);
 		
 		
-echo "<table>";
+echo "<table>  ";
 	
 while ($message_result = mysql_fetch_array($result_set)) 
 									{
@@ -27,7 +27,7 @@ while ($message_result = mysql_fetch_array($result_set))
 
 											echo "<tr>";
 											
-											echo "<td  width='100px'>{$sender_name}</td>";
+											echo "<td  width='100px' class = 'reply_name'>{$sender_name}</td>";
 											echo "<td align='right'>{$time_stamp}</td>";
 											echo "</tr>";
 											
@@ -40,8 +40,7 @@ while ($message_result = mysql_fetch_array($result_set))
 									}
 	
 echo "</table>
-<textarea id='myTextarea' cols='80' rows='5'>
-Message
+<textarea id='myTextarea' >
 </textarea>
 <br>
 <button type='button' onclick=send_message('{$reciever_id}')>Reply</button>";
