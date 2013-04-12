@@ -162,11 +162,6 @@ $message = "&nbsp;&nbsp;&nbsp;&nbsp;Username/password combination incorrect.<br 
   </div>
 </div>
 
-<footer>
-	  <div class="footerlink">
-		<center><p class="mf">Copyright &copy; 2013 <a href="#">Course Repository</a> - All Rights Reserved</p></center>
-	  </div>
-	</footer>
 <script type="text/javascript"> Cufon.now(); </script>
 <!-- END PAGE SOURCE -->
 

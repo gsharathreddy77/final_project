@@ -154,13 +154,7 @@ function new_message(sender)
           
         </ul>
       </nav>
-      <form action="#" id="search-form">
-        <fieldset>
-          <div class="rowElem">
-            <input type="text">
-            <a href="#">Search</a></div>
-        </fieldset>
-      </form>
+     
     </div>
   </header>
   <div class="container">
@@ -262,15 +256,9 @@ function new_message(sender)
     </section>
   </div>
 </div>
-<footer>
-  <div class="footerlink">
-    <p class="lf">Copyright &copy; 2010 <a href="#">SiteName</a> - All Rights Reserved</p>
-    <p class="rf"><a href="http://all-free-download.com/free-website-templates/">Free CSS Templates</a> by <a href="http://www.templatemonster.com/">TemplateMonster</a></p>
-    <div style="clear:both;"></div>
-  </div>
-</footer>
+
 <script type="text/javascript"> Cufon.now(); </script>
 <!-- END PAGE SOURCE -->
-<div align=center>This template  downloaded form <a href='http://all-free-download.com/free-website-templates/'>free website templates</a></div></body>
+
 </html>
 <?php include("includes/footer.php"); ?>

@@ -707,4 +707,13 @@ where A.webmail_id_reciever='{$id_reciever}' order by `time_stamp` desc) Z group
 			print "</script>"; 
 	}
 	
+	//Sends the total number of unread messages
+	function total_unread_messages($reciever_id)
+	{
+		$query = "SELECT count(*) AS count from message where webmail_id_reciever = '".$reciever_id."' and reciever_read = 0";
+		$result_set = mysql_query($query);
+		
+		$message_result = mysql_fetch_array($result_set);
+		return $message_result['count'];
+	}
 ?>
