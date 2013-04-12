@@ -185,6 +185,7 @@ function new_message(sender)
           </div>
         </fieldset>
       </form>
+      
       <h2>Fresh <span>News</span></h2>
       <ul class="news">
         <li><strong>June 30, 2010</strong>
