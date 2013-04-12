@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 08, 2013 at 08:09 AM
+-- Generation Time: Apr 08, 2013 at 09:28 AM
 -- Server version: 5.5.24-log
 -- PHP Version: 5.4.3
 
@@ -27,13 +27,20 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `comments` (
-  `comment_id` varchar(10) NOT NULL,
-  `comment_name` varchar(50) NOT NULL,
+  `comment_id` int(11) NOT NULL AUTO_INCREMENT,
+  `webmail_id` varchar(20) NOT NULL,
   `comment_text` text NOT NULL,
-  `thread_id` varchar(10) NOT NULL,
+  `thread_id` int(11) NOT NULL,
   PRIMARY KEY (`comment_id`),
   KEY `thread_id` (`thread_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=33 ;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`comment_id`, `webmail_id`, `comment_text`, `thread_id`) VALUES
+(32, 'srs', '.No this is not. Sorry its fine', 3);
 
 -- --------------------------------------------------------
 
@@ -99,7 +106,7 @@ CREATE TABLE IF NOT EXISTS `documents` (
   PRIMARY KEY (`file_id`),
   KEY `course_id` (`course_id`,`semester`,`year`),
   KEY `uploader_id` (`uploader_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=53 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=56 ;
 
 --
 -- Dumping data for table `documents`
@@ -156,6 +163,127 @@ CREATE TABLE IF NOT EXISTS `instructor` (
 
 INSERT INTO `instructor` (`webmail_id`, `name`, `instructor_id`) VALUES
 ('srs', 'Dr. Ranbir ', '101');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `message`
+--
+
+CREATE TABLE IF NOT EXISTS `message` (
+  `webmail_id_sender` varchar(20) NOT NULL,
+  `webmail_id_reciever` varchar(20) NOT NULL,
+  `message` text NOT NULL,
+  `time_stamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `reciever_read` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `message`
+--
+
+INSERT INTO `message` (`webmail_id_sender`, `webmail_id_reciever`, `message`, `time_stamp`, `reciever_read`) VALUES
+('sahil', 'aduti', 'dsafsdfasd sdaf sad fsa f', '2013-04-01 01:13:49', 0),
+('sahil', 'aduti', 'dsafsdfassafasd sf asd fadsf sad fsa f', '2013-04-01 01:14:03', 0),
+('sahil', 'aduti', 'sdafdsaf sf sf ', '2013-04-01 01:14:57', 0),
+('aduti', 'sahil', 'sdafdsaf sf sf ', '2013-04-01 01:14:59', 0),
+('sahil', 'aduti', 'hello 1 ', '2013-04-01 01:15:57', 0),
+('aduti', 'sahil', 'hello 2 ', '2013-04-01 01:16:59', 0),
+('dileep', 'sahil', 'databases kar saale', '2013-03-31 13:00:45', 0),
+('dileep', 'aduti', 'room se bahar nikla?', '2013-03-31 12:57:45', 0),
+('sahil', 'aduti', 'dsafsdfasd sdaf sad fsa f', '2013-03-31 19:43:49', 0),
+('sahil', 'aduti', 'dsafsdfassafasd sf asd fadsf sad fsa f', '2013-03-31 19:44:03', 0),
+('sahil', 'aduti', 'sdafdsaf sf sf ', '2013-03-31 19:44:57', 0),
+('aduti', 'sahil', 'sdafdsaf sf sf ', '2013-03-31 19:44:59', 0),
+('sahil', 'aduti', 'hello 1 ', '2013-03-31 19:45:57', 0),
+('aduti', 'sahil', 'hello 2 ', '2013-03-31 19:46:59', 0),
+('dileep', 'sahil', 'databases kar saale', '2013-03-31 07:30:45', 0),
+('dileep', 'aduti', 'room se bahar nikla?', '2013-03-31 07:27:45', 0),
+('p.sai', 'p.dileep', 'Hii ra', '2013-04-01 07:59:24', 0),
+('p.dileep', 'p.sai', 'Hii chepu enti', '2013-04-01 07:59:24', 0),
+('p.sai', 'p.dileep', 'Message', '2013-04-08 07:00:00', 0),
+('p.sai', 'p.dileep', 'hi ra', '2013-04-08 07:00:00', 0),
+('p.sai', 'p.dileep', 'fsdafsafdasfasfdsadf', '2013-04-08 07:00:00', 0),
+('p.sai', 'p.dillep', '', '2013-04-09 07:00:00', 0),
+('p.sai', 'p.dileep', '', '2013-04-09 07:00:00', 0),
+('p.sai', 'p.dileep', '', '2013-04-09 07:00:00', 0),
+('p.sai', 'dasfdsa', '', '2013-04-09 07:00:00', 0),
+('p.sai', 'p.dileep', '', '2013-04-09 07:00:00', 0),
+('p.sai', 'asdf', '', '2013-04-09 07:00:00', 0),
+('p.sai', 'asdf', '', '2013-04-09 07:00:00', 0),
+('p.sai', 'asdfd', '', '2013-04-09 07:00:00', 0),
+('p.sai', 'adsf', '', '2013-04-09 07:00:00', 0),
+('p.sai', 'asdf', 'fasdf', '2013-04-09 07:00:00', 0),
+('p.sai', 'sadfdas', 'sadfdsa', '2013-04-09 07:00:00', 0),
+('p.sai', 'p.dileep', 'sadfdsa', '2013-04-09 07:00:00', 0),
+('p.sai', 'sharath', 'sadfdsa', '2013-04-09 07:00:00', 0),
+('p.sai', 'sharath', 'sadfdsa', '2013-04-09 07:00:00', 0),
+('p.sai', 'sharath', 'fasf', '2013-04-09 07:00:00', 0),
+('p.sai', 'sahil', 'fsadf', '2013-04-09 07:00:00', 0),
+('p.sai', 'mohan', 'dsaf', '2013-04-09 07:00:00', 0),
+('p.sai', 'mohan', 'dsaf', '2013-04-09 07:00:00', 0),
+('p.sai', 'mohan', 'fsadf', '2013-04-09 07:00:00', 0),
+('p.sai', 'sahil', 'dfsa', '2013-04-09 07:00:00', 0),
+('p.sai', 'sa', 'fadsf', '2013-04-09 07:00:00', 0),
+('p.sai', 'lolz', 'dfasf', '2013-04-09 07:00:00', 0),
+('p.sai', 'tol', 'dfsaf', '2013-04-09 07:00:00', 0),
+('p.dileep', 'p.dileep', 'Yes going', '2013-04-07 18:30:00', 0),
+('p.dileep', 'p.sai', 'get time pls', '2013-04-07 18:30:00', 0),
+('p.dileep', 'p.sai', 'manchiga kottu', '2013-04-07 18:30:00', 0),
+('p.sai', 'p.dileep', 'SOME THING', '2013-04-07 18:30:00', 0),
+('p.sai', 'p.dileep', 'sdafdsafasd', '2013-04-07 18:30:00', 0),
+('p.sai', 'sahil', 'dfsfadsf sadf sad f', '2013-04-07 18:30:00', 0),
+('p.sai', 'p.dileep', 'mohan', '2013-04-07 18:30:00', 0),
+('p.dileep', 'p.sai', 'dasfdsaf saf sadf ', '2013-04-08 09:09:53', 0),
+('p.sai', 'p.dileep', 'sahil with key', '2013-04-08 09:10:45', 0),
+('p.sai', 'p.dileep', 'Messagesdfdas', '2013-04-08 09:12:41', 0),
+('p.sai', 'p.dileep', 'Message lolz', '2013-04-08 09:13:25', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `news_course`
+--
+
+CREATE TABLE IF NOT EXISTS `news_course` (
+  `nid` int(11) NOT NULL DEFAULT '0',
+  `course_id` varchar(10) NOT NULL,
+  `semester` int(2) NOT NULL,
+  `year` year(4) NOT NULL,
+  PRIMARY KEY (`nid`,`course_id`,`semester`,`year`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `news_course`
+--
+
+INSERT INTO `news_course` (`nid`, `course_id`, `semester`, `year`) VALUES
+(1, 'CS344', 1, 2013),
+(3, 'CS344', 1, 2013),
+(4, 'CS344', 1, 2013);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `news_feed`
+--
+
+CREATE TABLE IF NOT EXISTS `news_feed` (
+  `nid` int(11) NOT NULL AUTO_INCREMENT,
+  `news_text` text,
+  `webmail` varchar(20) DEFAULT NULL,
+  `date` datetime NOT NULL,
+  PRIMARY KEY (`nid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `news_feed`
+--
+
+INSERT INTO `news_feed` (`nid`, `news_text`, `webmail`, `date`) VALUES
+(1, 'quiz2 on wed', 'venkatesh', '2013-04-08 00:00:00'),
+(3, 'hello, this saturday no class', 'p.sai', '2013-04-07 00:00:00'),
+(4, 'Slides are uploaded', 'p.sai', '2013-04-05 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -286,17 +414,31 @@ INSERT INTO `teaches` (`instructor_webmail_id`, `course_id`, `semester`, `year`)
 --
 
 CREATE TABLE IF NOT EXISTS `thread` (
-  `thread_id` varchar(10) NOT NULL,
-  `thread_name` int(200) NOT NULL,
-  `posted_by` varchar(50) NOT NULL,
+  `thread_id` int(11) NOT NULL AUTO_INCREMENT,
+  `thread_name` varchar(200) NOT NULL,
   `webmail_id` varchar(20) NOT NULL,
   `course_id` varchar(10) NOT NULL,
   `semester` int(2) NOT NULL,
   `year` year(4) NOT NULL,
+  `description` text NOT NULL,
   PRIMARY KEY (`thread_id`),
   KEY `course_id` (`course_id`,`semester`,`year`),
   KEY `webmail_id` (`webmail_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=54 ;
+
+--
+-- Dumping data for table `thread`
+--
+
+INSERT INTO `thread` (`thread_id`, `thread_name`, `webmail_id`, `course_id`, `semester`, `year`, `description`) VALUES
+(3, 'This is waste', 'p.dileep', 'CS344', 1, 2013, 'waste'),
+(14, 'Parsing', 'p.sai', 'CS346', 1, 2013, 'Syatax analysis'),
+(38, 'yes', 'p.sai', 'CS344', 1, 2013, 'please'),
+(44, 'edit thread', 'p.sai', 'CS344', 1, 2013, 'editing done'),
+(50, 'New thread with bootstrap', 'p.sai', 'CS344', 1, 2013, 'boot strap is awesome'),
+(51, 'merged code', 'p.sai', 'CS344', 1, 2013, 'This is mereged'),
+(52, 'cretae', 'p.dileep', 'CS346', 1, 2013, ' new thread'),
+(53, 'Instructoir thread', 'srs', 'CS344', 1, 2013, 'Instructor desc');
 
 --
 -- Constraints for dumped tables
@@ -331,6 +473,12 @@ ALTER TABLE `enrolls`
 --
 ALTER TABLE `instructor`
   ADD CONSTRAINT `instructor_ibfk_1` FOREIGN KEY (`webmail_id`) REFERENCES `person` (`webmail_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `news_course`
+--
+ALTER TABLE `news_course`
+  ADD CONSTRAINT `news_course_ibfk_1` FOREIGN KEY (`nid`) REFERENCES `news_feed` (`nid`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `quiz`
