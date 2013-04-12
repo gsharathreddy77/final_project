@@ -27,7 +27,7 @@
 <script type="text/javascript" src="js/jquery-1.4.2.min.js" ></script>
 <script type="text/javascript" src="js/cufon-yui.js"></script>
 <script type="text/javascript" src="js/cufon-replace.js"></script>
-<script src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/Myriad_Pro_300.font.js"></script>
 <script type="text/javascript" src="js/Myriad_Pro_400.font.js"></script>
@@ -46,12 +46,12 @@ else
   {// code for IE6, IE5
   xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
   }
-xmlhttp.onreadystatechange=cfunc;
-xmlhttp.open("GET",url,true);
-xmlhttp.send();
+	xmlhttp.onreadystatechange=cfunc;
+	xmlhttp.open("GET",url,true);
+	xmlhttp.send();
 }
 
-
+<!-- This fills the message on click in the right side -->
 function fill_messages(webmail_id)
 {
 	reply_to = webmail_id;
@@ -60,10 +60,14 @@ function fill_messages(webmail_id)
 	{
 	if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
-    document.getElementById("message_right").innerHTML=xmlhttp.responseText;
+		document.getElementById("message_right").innerHTML=xmlhttp.responseText;
+		var objDiv = document.getElementById("message_right");
+			objDiv.scrollTop = objDiv.scrollHeight;
     }
   });
 }
+
+<!-- Sends the reply message by writing in the box -->
 function send_message(sender_id)
 {
 	var message = document.getElementById("myTextarea").value;
@@ -73,26 +77,22 @@ function send_message(sender_id)
 		alert("Please write something");
 		return;
 	}
-	alert(message);
 	var url="reply_messages.php?sender="+sender_id+"&reciever="+reply_to+"&text="+message;
-	alert(url);
 	loadXMLDoc(url,function()
 	{
 	if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
+		
 		fill_messages(reply_to);
     }
   });
-  
-  //fill_messages(reply_to);
 }
 
-
+<!-- Sends the new message by clicking on the new message button-->
 function new_message(sender)
 {
 	var reciever = document.getElementById("id_reciever").value;
 	var message =  document.getElementById("myTextmessage").value;
-	alert(message);
 	message = message.replace(/^\s+|\s+$/g,'');
 	reciever = reciever.replace(/^\s+|\s+$/g,'');
 	
@@ -106,14 +106,28 @@ function new_message(sender)
 		alert("Please write some message.");
 		return;
 	}
+	if(sender == reciever)
+	{
+		alert("Please don't write your email address.");
+		return;
+	}
 	
 	var url="reply_messages.php?sender="+sender+"&reciever="+reciever+"&text="+message;
-	loadXMLDoc(url,function()
+	loadXMLDoc(url,function(data)
 	{
 	if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
-		alert("Message sent successfully");
-		window.location = "list_message.php";
+		var success_status = xmlhttp.responseText;
+		if(success_status.match("success"))
+		{
+			alert("Message sent successfully");
+			window.location = "list_message.php";
+			return;
+		}else
+		{
+			alert("Check Email Address");
+			return;
+		}
     }
 	});
 }
@@ -140,13 +154,7 @@ function new_message(sender)
           
         </ul>
       </nav>
-      <form action="#" id="search-form">
-        <fieldset>
-          <div class="rowElem">
-            <input type="text">
-            <a href="#">Search</a></div>
-        </fieldset>
-      </form>
+     
     </div>
   </header>
   <div class="container">
@@ -171,6 +179,7 @@ function new_message(sender)
           </div>
         </fieldset>
       </form>
+      
       <h2>Fresh <span>News</span></h2>
       <ul class="news">
         <li><strong>June 30, 2010</strong>
@@ -191,8 +200,8 @@ function new_message(sender)
 				 <div id='compose_message_modal' class='modal hide fade' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
 								<div class='modal-body'>
 									<table border='0'>
-									<tr><td > To: </td><td><input id='id_reciever' style="width:400px;" type="text"></input></td></tr>
-									<tr><td > Message : </td><td><textarea id='myTextmessage'  style="width:400px; height:100px;" ></textarea></td></tr>
+									<tr><td > To </td><td><input id='id_reciever' style="width:400px;" type="text"></input></td></tr>
+									<tr><td > Message  </td><td><textarea id='myTextmessage'  style="width:400px; height:100px;" ></textarea></td></tr>
 									</table>
 									</div>
 									<div class='modal-footer'>
@@ -208,10 +217,9 @@ function new_message(sender)
 			
 			</div>
 			
+			<!-- Left side of message box-->
 			<div  style="height:500px;width:42%;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;" >
-				
-				
-					<div  id="message" >
+				<div  id="message" >
 						<?php
 							$result_set = get_recent_chat($webmail_id);
 							if($result_set<>NULL)
@@ -234,11 +242,9 @@ function new_message(sender)
 												echo "<div></div>";
 												echo "</div>";
 											echo "</div>";
-											echo "<div >----------------------------------------------------</div>";
+											echo "<div >------------------------------------------------</div>";
 
-									}
-									
-									
+									}	
 							}
 						?>
 
@@ -250,15 +256,9 @@ function new_message(sender)
     </section>
   </div>
 </div>
-<footer>
-  <div class="footerlink">
-    <p class="lf">Copyright &copy; 2010 <a href="#">SiteName</a> - All Rights Reserved</p>
-    <p class="rf"><a href="http://all-free-download.com/free-website-templates/">Free CSS Templates</a> by <a href="http://www.templatemonster.com/">TemplateMonster</a></p>
-    <div style="clear:both;"></div>
-  </div>
-</footer>
+
 <script type="text/javascript"> Cufon.now(); </script>
 <!-- END PAGE SOURCE -->
-<div align=center>This template  downloaded form <a href='http://all-free-download.com/free-website-templates/'>free website templates</a></div></body>
+
 </html>
 <?php include("includes/footer.php"); ?>

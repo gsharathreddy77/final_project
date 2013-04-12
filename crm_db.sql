@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.1
+-- version 3.5.2.2
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 08, 2013 at 09:28 AM
--- Server version: 5.5.24-log
--- PHP Version: 5.4.3
+-- Generation Time: Apr 12, 2013 at 03:04 PM
+-- Server version: 5.5.27
+-- PHP Version: 5.4.7
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -171,73 +171,38 @@ INSERT INTO `instructor` (`webmail_id`, `name`, `instructor_id`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `message` (
+  `message_id` int(11) NOT NULL AUTO_INCREMENT,
   `webmail_id_sender` varchar(20) NOT NULL,
   `webmail_id_reciever` varchar(20) NOT NULL,
   `message` text NOT NULL,
   `time_stamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `reciever_read` tinyint(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `reciever_read` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`message_id`),
+  KEY `webmail_id_sender` (`webmail_id_sender`),
+  KEY `webmail_id_reciever` (`webmail_id_reciever`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
 
 --
 -- Dumping data for table `message`
 --
 
-INSERT INTO `message` (`webmail_id_sender`, `webmail_id_reciever`, `message`, `time_stamp`, `reciever_read`) VALUES
-('sahil', 'aduti', 'dsafsdfasd sdaf sad fsa f', '2013-04-01 01:13:49', 0),
-('sahil', 'aduti', 'dsafsdfassafasd sf asd fadsf sad fsa f', '2013-04-01 01:14:03', 0),
-('sahil', 'aduti', 'sdafdsaf sf sf ', '2013-04-01 01:14:57', 0),
-('aduti', 'sahil', 'sdafdsaf sf sf ', '2013-04-01 01:14:59', 0),
-('sahil', 'aduti', 'hello 1 ', '2013-04-01 01:15:57', 0),
-('aduti', 'sahil', 'hello 2 ', '2013-04-01 01:16:59', 0),
-('dileep', 'sahil', 'databases kar saale', '2013-03-31 13:00:45', 0),
-('dileep', 'aduti', 'room se bahar nikla?', '2013-03-31 12:57:45', 0),
-('sahil', 'aduti', 'dsafsdfasd sdaf sad fsa f', '2013-03-31 19:43:49', 0),
-('sahil', 'aduti', 'dsafsdfassafasd sf asd fadsf sad fsa f', '2013-03-31 19:44:03', 0),
-('sahil', 'aduti', 'sdafdsaf sf sf ', '2013-03-31 19:44:57', 0),
-('aduti', 'sahil', 'sdafdsaf sf sf ', '2013-03-31 19:44:59', 0),
-('sahil', 'aduti', 'hello 1 ', '2013-03-31 19:45:57', 0),
-('aduti', 'sahil', 'hello 2 ', '2013-03-31 19:46:59', 0),
-('dileep', 'sahil', 'databases kar saale', '2013-03-31 07:30:45', 0),
-('dileep', 'aduti', 'room se bahar nikla?', '2013-03-31 07:27:45', 0),
-('p.sai', 'p.dileep', 'Hii ra', '2013-04-01 07:59:24', 0),
-('p.dileep', 'p.sai', 'Hii chepu enti', '2013-04-01 07:59:24', 0),
-('p.sai', 'p.dileep', 'Message', '2013-04-08 07:00:00', 0),
-('p.sai', 'p.dileep', 'hi ra', '2013-04-08 07:00:00', 0),
-('p.sai', 'p.dileep', 'fsdafsafdasfasfdsadf', '2013-04-08 07:00:00', 0),
-('p.sai', 'p.dillep', '', '2013-04-09 07:00:00', 0),
-('p.sai', 'p.dileep', '', '2013-04-09 07:00:00', 0),
-('p.sai', 'p.dileep', '', '2013-04-09 07:00:00', 0),
-('p.sai', 'dasfdsa', '', '2013-04-09 07:00:00', 0),
-('p.sai', 'p.dileep', '', '2013-04-09 07:00:00', 0),
-('p.sai', 'asdf', '', '2013-04-09 07:00:00', 0),
-('p.sai', 'asdf', '', '2013-04-09 07:00:00', 0),
-('p.sai', 'asdfd', '', '2013-04-09 07:00:00', 0),
-('p.sai', 'adsf', '', '2013-04-09 07:00:00', 0),
-('p.sai', 'asdf', 'fasdf', '2013-04-09 07:00:00', 0),
-('p.sai', 'sadfdas', 'sadfdsa', '2013-04-09 07:00:00', 0),
-('p.sai', 'p.dileep', 'sadfdsa', '2013-04-09 07:00:00', 0),
-('p.sai', 'sharath', 'sadfdsa', '2013-04-09 07:00:00', 0),
-('p.sai', 'sharath', 'sadfdsa', '2013-04-09 07:00:00', 0),
-('p.sai', 'sharath', 'fasf', '2013-04-09 07:00:00', 0),
-('p.sai', 'sahil', 'fsadf', '2013-04-09 07:00:00', 0),
-('p.sai', 'mohan', 'dsaf', '2013-04-09 07:00:00', 0),
-('p.sai', 'mohan', 'dsaf', '2013-04-09 07:00:00', 0),
-('p.sai', 'mohan', 'fsadf', '2013-04-09 07:00:00', 0),
-('p.sai', 'sahil', 'dfsa', '2013-04-09 07:00:00', 0),
-('p.sai', 'sa', 'fadsf', '2013-04-09 07:00:00', 0),
-('p.sai', 'lolz', 'dfasf', '2013-04-09 07:00:00', 0),
-('p.sai', 'tol', 'dfsaf', '2013-04-09 07:00:00', 0),
-('p.dileep', 'p.dileep', 'Yes going', '2013-04-07 18:30:00', 0),
-('p.dileep', 'p.sai', 'get time pls', '2013-04-07 18:30:00', 0),
-('p.dileep', 'p.sai', 'manchiga kottu', '2013-04-07 18:30:00', 0),
-('p.sai', 'p.dileep', 'SOME THING', '2013-04-07 18:30:00', 0),
-('p.sai', 'p.dileep', 'sdafdsafasd', '2013-04-07 18:30:00', 0),
-('p.sai', 'sahil', 'dfsfadsf sadf sad f', '2013-04-07 18:30:00', 0),
-('p.sai', 'p.dileep', 'mohan', '2013-04-07 18:30:00', 0),
-('p.dileep', 'p.sai', 'dasfdsaf saf sadf ', '2013-04-08 09:09:53', 0),
-('p.sai', 'p.dileep', 'sahil with key', '2013-04-08 09:10:45', 0),
-('p.sai', 'p.dileep', 'Messagesdfdas', '2013-04-08 09:12:41', 0),
-('p.sai', 'p.dileep', 'Message lolz', '2013-04-08 09:13:25', 0);
+INSERT INTO `message` (`message_id`, `webmail_id_sender`, `webmail_id_reciever`, `message`, `time_stamp`, `reciever_read`) VALUES
+(1, 'p.sai', 'p.dileep', 'fasf', '2013-04-12 10:26:14', 1),
+(2, 'p.dileep', 'p.sai', 'sdafdsadsa', '2013-04-12 10:59:39', 1),
+(3, 'p.dileep', 'srs', 'sdafdsaf', '2013-04-12 10:59:50', 0),
+(4, 'p.dileep', 'p.sai', 'fdasfsa', '2013-04-12 11:00:08', 1),
+(5, 'p.dileep', 'p.sai', 'fsadfdsa', '2013-04-12 11:00:08', 1),
+(6, 'p.dileep', 'p.sai', 'fsadfdsads', '2013-04-12 11:00:22', 1),
+(7, 'p.dileep', 'srs', 'dsafdsasa', '2013-04-12 11:00:22', 0),
+(8, 'p.sai', 'p.dileep', 'fdsafdsaf', '2013-04-12 11:00:33', 1),
+(9, 'p.sai', 'p.dileep', 'dsafdasf', '2013-04-12 11:00:33', 1),
+(10, 'srs', 'p.dileep', 'dsafdasf', '2013-04-12 11:00:48', 1),
+(11, 'srs', 'p.dileep', 'dsafdsaf', '2013-04-12 11:00:48', 1),
+(12, 'p.dileep', 'p.sai', 'sdafasdsadf', '2013-04-12 11:17:17', 1),
+(13, 'p.dileep', 'p.sai', 'sahil is good', '2013-04-12 11:17:41', 1),
+(14, 'p.dileep', 'srs', 'it is a good day', '2013-04-12 11:17:58', 0),
+(15, 'p.sai', 'p.dileep', 'lets check notification', '2013-04-12 12:28:42', 1),
+(16, 'p.sai', 'p.dileep', 'mohan is good', '2013-04-12 13:01:57', 0);
 
 -- --------------------------------------------------------
 
@@ -273,6 +238,7 @@ CREATE TABLE IF NOT EXISTS `news_feed` (
   `news_text` text,
   `webmail` varchar(20) DEFAULT NULL,
   `date` datetime NOT NULL,
+  `content` text NOT NULL,
   PRIMARY KEY (`nid`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
@@ -280,10 +246,10 @@ CREATE TABLE IF NOT EXISTS `news_feed` (
 -- Dumping data for table `news_feed`
 --
 
-INSERT INTO `news_feed` (`nid`, `news_text`, `webmail`, `date`) VALUES
-(1, 'quiz2 on wed', 'venkatesh', '2013-04-08 00:00:00'),
-(3, 'hello, this saturday no class', 'p.sai', '2013-04-07 00:00:00'),
-(4, 'Slides are uploaded', 'p.sai', '2013-04-05 00:00:00');
+INSERT INTO `news_feed` (`nid`, `news_text`, `webmail`, `date`, `content`) VALUES
+(1, 'quiz2 on wed', 'venkatesh', '2013-04-08 00:00:00', ''),
+(3, 'hello, this saturday no class', 'p.sai', '2013-04-07 00:00:00', ''),
+(4, 'Slides are uploaded', 'p.sai', '2013-04-05 00:00:00', '');
 
 -- --------------------------------------------------------
 
@@ -473,6 +439,13 @@ ALTER TABLE `enrolls`
 --
 ALTER TABLE `instructor`
   ADD CONSTRAINT `instructor_ibfk_1` FOREIGN KEY (`webmail_id`) REFERENCES `person` (`webmail_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `message`
+--
+ALTER TABLE `message`
+  ADD CONSTRAINT `message_ibfk_2` FOREIGN KEY (`webmail_id_reciever`) REFERENCES `person` (`webmail_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `message_ibfk_1` FOREIGN KEY (`webmail_id_sender`) REFERENCES `person` (`webmail_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `news_course`
