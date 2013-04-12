@@ -60,7 +60,9 @@ function fill_messages(webmail_id)
 	{
 	if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
-    document.getElementById("message_right").innerHTML=xmlhttp.responseText;
+		document.getElementById("message_right").innerHTML=xmlhttp.responseText;
+		var objDiv = document.getElementById("message_right");
+			objDiv.scrollTop = objDiv.scrollHeight;
     }
   });
 }
