@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 12, 2013 at 01:19 PM
+-- Generation Time: Apr 12, 2013 at 03:04 PM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -180,27 +180,29 @@ CREATE TABLE IF NOT EXISTS `message` (
   PRIMARY KEY (`message_id`),
   KEY `webmail_id_sender` (`webmail_id_sender`),
   KEY `webmail_id_reciever` (`webmail_id_reciever`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
 
 --
 -- Dumping data for table `message`
 --
 
 INSERT INTO `message` (`message_id`, `webmail_id_sender`, `webmail_id_reciever`, `message`, `time_stamp`, `reciever_read`) VALUES
-(1, 'p.sai', 'p.dileep', 'fasf', '2013-04-12 10:26:14', 0),
-(2, 'p.dileep', 'p.sai', 'sdafdsadsa', '2013-04-12 10:59:39', 0),
+(1, 'p.sai', 'p.dileep', 'fasf', '2013-04-12 10:26:14', 1),
+(2, 'p.dileep', 'p.sai', 'sdafdsadsa', '2013-04-12 10:59:39', 1),
 (3, 'p.dileep', 'srs', 'sdafdsaf', '2013-04-12 10:59:50', 0),
-(4, 'p.dileep', 'p.sai', 'fdasfsa', '2013-04-12 11:00:08', 0),
-(5, 'p.dileep', 'p.sai', 'fsadfdsa', '2013-04-12 11:00:08', 0),
-(6, 'p.dileep', 'p.sai', 'fsadfdsads', '2013-04-12 11:00:22', 0),
+(4, 'p.dileep', 'p.sai', 'fdasfsa', '2013-04-12 11:00:08', 1),
+(5, 'p.dileep', 'p.sai', 'fsadfdsa', '2013-04-12 11:00:08', 1),
+(6, 'p.dileep', 'p.sai', 'fsadfdsads', '2013-04-12 11:00:22', 1),
 (7, 'p.dileep', 'srs', 'dsafdsasa', '2013-04-12 11:00:22', 0),
-(8, 'p.sai', 'p.dileep', 'fdsafdsaf', '2013-04-12 11:00:33', 0),
-(9, 'p.sai', 'p.dileep', 'dsafdasf', '2013-04-12 11:00:33', 0),
-(10, 'srs', 'p.dileep', 'dsafdasf', '2013-04-12 11:00:48', 0),
-(11, 'srs', 'p.dileep', 'dsafdsaf', '2013-04-12 11:00:48', 0),
-(12, 'p.dileep', 'p.sai', 'sdafasdsadf', '2013-04-12 11:17:17', 0),
-(13, 'p.dileep', 'p.sai', 'sahil is good', '2013-04-12 11:17:41', 0),
-(14, 'p.dileep', 'srs', 'it is a good day', '2013-04-12 11:17:58', 0);
+(8, 'p.sai', 'p.dileep', 'fdsafdsaf', '2013-04-12 11:00:33', 1),
+(9, 'p.sai', 'p.dileep', 'dsafdasf', '2013-04-12 11:00:33', 1),
+(10, 'srs', 'p.dileep', 'dsafdasf', '2013-04-12 11:00:48', 1),
+(11, 'srs', 'p.dileep', 'dsafdsaf', '2013-04-12 11:00:48', 1),
+(12, 'p.dileep', 'p.sai', 'sdafasdsadf', '2013-04-12 11:17:17', 1),
+(13, 'p.dileep', 'p.sai', 'sahil is good', '2013-04-12 11:17:41', 1),
+(14, 'p.dileep', 'srs', 'it is a good day', '2013-04-12 11:17:58', 0),
+(15, 'p.sai', 'p.dileep', 'lets check notification', '2013-04-12 12:28:42', 1),
+(16, 'p.sai', 'p.dileep', 'mohan is good', '2013-04-12 13:01:57', 0);
 
 -- --------------------------------------------------------
 
@@ -236,6 +238,7 @@ CREATE TABLE IF NOT EXISTS `news_feed` (
   `news_text` text,
   `webmail` varchar(20) DEFAULT NULL,
   `date` datetime NOT NULL,
+  `content` text NOT NULL,
   PRIMARY KEY (`nid`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
@@ -243,10 +246,10 @@ CREATE TABLE IF NOT EXISTS `news_feed` (
 -- Dumping data for table `news_feed`
 --
 
-INSERT INTO `news_feed` (`nid`, `news_text`, `webmail`, `date`) VALUES
-(1, 'quiz2 on wed', 'venkatesh', '2013-04-08 00:00:00'),
-(3, 'hello, this saturday no class', 'p.sai', '2013-04-07 00:00:00'),
-(4, 'Slides are uploaded', 'p.sai', '2013-04-05 00:00:00');
+INSERT INTO `news_feed` (`nid`, `news_text`, `webmail`, `date`, `content`) VALUES
+(1, 'quiz2 on wed', 'venkatesh', '2013-04-08 00:00:00', ''),
+(3, 'hello, this saturday no class', 'p.sai', '2013-04-07 00:00:00', ''),
+(4, 'Slides are uploaded', 'p.sai', '2013-04-05 00:00:00', '');
 
 -- --------------------------------------------------------
 
