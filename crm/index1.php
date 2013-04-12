@@ -63,9 +63,8 @@
 				redirect_to("main_page.php");
 			} else {
 				// username/password combo was not found in the database
-				$message = "Username/password combination incorrect.<br />
-					Please make sure your caps lock key is off and try again.";
-			}
+$message = "&nbsp;&nbsp;&nbsp;&nbsp;Username/password combination incorrect.<br />
+					   &nbsp;&nbsp;&nbsp;&nbsp;Make sure caps lock key is off and try again.";			}
 		} else {
 			if (count($errors) == 1) {
 				$message = "There was 1 error in the form.";
@@ -86,16 +85,19 @@
 
 <html lang="en">
 <head>
-<title>Student's Site</title>
+<title>Course Repository</title>
 <meta charset="utf-8">
 <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 <script type="text/javascript" src="js/jquery-1.4.2.min.js" ></script>
 <script type="text/javascript" src="js/cufon-yui.js"></script>
 <script type="text/javascript" src="js/cufon-replace.js"></script>
 <script type="text/javascript" src="js/Myriad_Pro_300.font.js"></script>
 <script type="text/javascript" src="js/Myriad_Pro_400.font.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
 <!--[if lt IE 7]>
 <link rel="stylesheet" href="css/ie6.css" type="text/css" media="screen">
 <script type="text/javascript" src="js/ie_png.js"></script>
@@ -108,23 +110,16 @@
 <div class="wrap">
   <header>
     <div class="container">
-      <h1><a href="#">Student's site</a></h1>
+      <h1><a href="#">Course Repository</a></h1>
       <nav>
         <ul>
           <li class="current"><a href="index1.php" class="m1">Home Page</a></li>
           <li><a href="about-us.html" class="m2">About Us</a></li>
           <li><a href="articles.html" class="m3">Our Articles</a></li>
           <li><a href="contact-us.html" class="m4">Contact Us</a></li>
-          <li class="last"><a href="sitemap.html" class="m5">Sitemap</a></li>
+         <!-- <li class="last"><a href="sitemap.html" class="m5">Sitemap</a></li> -->
         </ul>
       </nav>
-      <form action="#" id="search-form">
-        <fieldset>
-          <div class="rowElem">
-            <input type="text">
-            <a href="#">Search</a></div>
-        </fieldset>
-      </form>
     </div>
   </header>
   <div class="container">
@@ -133,11 +128,11 @@
 	
     <section id="content">
       <div id="banner">
-        <h2>Member Login</h2>
+        <h2>Sign In</h2>
 		<form action="index1.php" method="post">
 			<table>
-				<tr>>
-					<td>Username:</td>
+				<tr>
+					<td width="40%" >Username:</td>
 					<td><input type="text" name="username" maxlength="30" value="" /></td>
 				</tr>
 				<tr>
@@ -155,47 +150,21 @@
 					</td>
 				</tr>
 				<tr>
+					<td></td>
 					<td colspan="2"><input type="submit" name="submit" value="Login" /></td>
 				</tr>
 			</table>
 		</form>
-		<?php if (!empty($message)) {echo "<p class=\"message\">" . $message . "</p>";} ?>
+		<?php if (!empty($message)) {echo "<p class=\"error_message\">" . $message . "</p>";} ?>
 		<?php if (!empty($errors)) { display_errors($errors); } ?>
-      </div>
-      <div class="inside">
-        <h2>Recent <span>Articles</span></h2>	
-        <ul class="list">
-          <li><span><img src="images/icon1.png"></span>
-            <h4>About Template</h4>
-            <p>Eusus consequam vitae habitur amet nullam vitae condis phasellus sed justo. Orcivel mollis intesque eu sempor ridictum a non laorem lacingilla wisi.</p>
-          </li>
-          <li><span><img src="images/icon2.png"></span>
-            <h4>Branch Office</h4>
-            <p>Eusus consequam vitae habitur amet nullam vitae condis phasellus sed justo. Orcivel mollis intesque eu sempor ridictum a non laorem lacingilla wisi.</p>
-          </li>
-          <li class="last"><span><img src="images/icon3.png"></span>
-            <h4>Student’s Time</h4>
-            <p>Eusus consequam vitae habitur amet nullam vitae condis phasellus sed justo. Orcivel mollis intesque eu sempor ridictum a non laorem lacingilla wisi.</p>
-          </li>
-        </ul>
-        <h2>Move Forward <span>With Your Education</span></h2>
-        <p><span class="txt1">Eusus consequam</span> vitae habitur amet nullam vitae condis phasellus sed justo. Orcivel mollis intesque eu sempor ridictum a non laorem lacingilla wisi. </p>
-        <div class="img-box"><img src="images/1page-img.jpg">Eusus consequam vitae habitur amet nullam vitae condis phasellus sed justo. Orcivel mollis intesque eu sempor ridictum a non laorem lacingilla wisi. Nuncrhoncus eros <a href="#">maurien ulla</a> facilis tor mauris tincidunt et vitae morbi. Velelit condimentes in laorem quis nullamcorper nam fauctor feugiat pellent sociis.</div>
-        <p class="p0">Eusus consequam vitae habitur amet nullam vitae condis phasellus sed justo. Orcivel mollis intesque eu sempor ridictum a <a href="#">non laorem</a> lacingilla wisi.</p>
       </div>
     </section>
   </div>
 </div>
-<footer>
-  <div class="footerlink">
-    <p class="lf">Copyright &copy; 2010 <a href="#">SiteName</a> - All Rights Reserved</p>
-    <p class="rf"><a href="http://all-free-download.com/free-website-templates/">Free CSS Templates</a> by <a href="http://in.linkedin.com/in/venkatsai101">Venkat Sai</a></p>
-    <div style="clear:both;"></div>
-  </div>
-</footer>
+
 <script type="text/javascript"> Cufon.now(); </script>
 <!-- END PAGE SOURCE -->
-<div align=center>This template  downloaded form <a href='http://all-free-download.com/free-website-templates/'>free website templates</a></div></body>
+
 </html>
 
 <?php include("includes/footer.php"); ?>
