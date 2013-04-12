@@ -641,7 +641,25 @@
 	function get_recent_chat($id_reciever)
 	{
 		global $connection;
-		$query = " select * from ( SELECT * from message where webmail_id_reciever = '{$id_reciever}' order by `time_stamp` desc )X group by X.webmail_id_sender";
+		//$query = " select * from ( SELECT * from message where webmail_id_reciever = '{$id_reciever}'    order by `time_stamp` desc )X group by X.webmail_id_sender";
+		
+		$query = "select * from ( SELECT * from
+(
+	select * from 
+		(
+			SELECT * FROM message WHERE webmail_id_reciever = '{$id_reciever}' ORDER BY `time_stamp` DESC 
+		)Y GROUP BY Y.webmail_id_sender
+
+	UNION
+
+	SELECT X.message_id, X.webmail_id_reciever, X.webmail_id_sender, X.message, X.time_stamp, X.reciever_read FROM 
+		(
+			SELECT * FROM message WHERE webmail_id_sender = '{$id_reciever}' ORDER BY `time_stamp` DESC
+		)X GROUP BY X.webmail_id_reciever
+	
+)A
+
+where A.webmail_id_reciever='{$id_reciever}' order by `time_stamp` desc) Z group by Z.webmail_id_sender ; " ; 
 		
 		$result_set = mysql_query($query, $connection);
 		if($result_set)
@@ -680,6 +698,13 @@
 		else
 			return NULL;
 			
+	}
+	//This funtion displays the alert message box
+	function alert_message($str)
+	{
+			print "<script type=\"text/javascript\">";
+			print "alert(\"" . $str."\")";
+			print "</script>"; 
 	}
 	
 ?>
