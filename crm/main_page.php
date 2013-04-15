@@ -30,11 +30,9 @@
       
       <nav>
         <ul>
-          <li class="current"><a href="main_page.php" class="m1">Main Page</a></li>
-          <li><a href="about-us.html" class="m2">About Us</a></li>
-          <li><a href="articles.html" class="m3">Our Articles</a></li>
-          <li><a href="contact-us.html" class="m4">Contact Us</a></li>
-          <li class="last"><a href="sitemap.html" class="m5">Sitemap</a></li>
+          <li class="current"><a href="index1.php" class="m1">Home Page</a></li>
+          <li><a href="about-us.php" class="m2">About Us</a></li>
+          <li><a href="contact-us.php" class="m4">Contact Us</a></li>
         </ul>
 		<h2>Welcome to Course Resource Management </h2>
       </nav>
