@@ -41,6 +41,7 @@ aside {
 	width:219px;
 	float:left;
 	margin-right:30px;
+	font-size: 20px;
 	padding:5px 0 0 0;
 }
 .fleft {
@@ -659,4 +660,17 @@ a {
 
 .error_message{
 	color:white;
+}
+#td_element{
+       border:none;
+}
+#search_name{
+       height:30px;
+}
+#descr{
+       height:30px;
+}
+#text_area{
+       height:50px;
+	   width:500px;
 }
